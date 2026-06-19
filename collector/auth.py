@@ -21,13 +21,17 @@ class SefazAuth:
         context = browser.new_context()
         page = context.new_page()
 
-        page.goto(LOGIN_URL)
+        page.goto(
+            LOGIN_URL,
+            wait_until="domcontentloaded",
+            timeout=120000
+        )
 
         page.fill('input[name="cod_cpf"]', cpf)
         page.fill('#dsc_senha', senha)
 
         page.click('input[type="submit"]')
-        page.wait_for_load_state("networkidle")
+        page.wait_for_load_state("domcontentloaded")
 
         if page.locator("text=Lista de Funções").count() == 0:
             raise Exception("Falha na autenticação")
