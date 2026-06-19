@@ -15,7 +15,7 @@ class SefazAuth:
         playwright = sync_playwright().start()
 
         browser = playwright.chromium.launch(
-            headless=False
+            headless=True
         )
 
         context = browser.new_context()
