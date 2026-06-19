@@ -52,7 +52,7 @@ vaf_type = st.selectbox(
 
 if st.button("Executar"):
 
-    browser = none
+    browser = None
     playwright.stop()
 
     with st.spinner("Executando extração..."):
