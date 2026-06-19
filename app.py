@@ -53,7 +53,7 @@ vaf_type = st.selectbox(
 if st.button("Executar"):
 
     browser = None
-    playwright.stop()
+    playwright = None
 
     with st.spinner("Executando extração..."):
 
@@ -123,9 +123,9 @@ if st.button("Executar"):
             st.error(str(e))
 
         finally:
-            if browser:
+            if browser is not None:
                 browser.close()
 
-            if playwright:
+            if playwright is not None:
                 playwright.stop()
             
