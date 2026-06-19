@@ -52,6 +52,9 @@ vaf_type = st.selectbox(
 
 if st.button("Executar"):
 
+    browser = none
+    playwright.stop()
+
     with st.spinner("Executando extração..."):
 
         auth = SefazAuth()
@@ -120,6 +123,9 @@ if st.button("Executar"):
             st.error(str(e))
 
         finally:
-            browser.close()
-            playwright.stop()
+            if browser:
+                browser.close()
+
+            if playwright:
+                playwright.stop()
             
